@@ -35,7 +35,7 @@ namespace Циклы
             {
                 for (int k = 0; k <= 10; k++)
                 {
-                    Console.WriteLine(j*k);
+                    Console.WriteLine("{0} * {1} = {2}", j, k, j*k);
                 }
                 Console.WriteLine();
             }
