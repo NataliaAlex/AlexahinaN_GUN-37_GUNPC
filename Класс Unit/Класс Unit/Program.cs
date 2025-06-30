@@ -55,27 +55,20 @@ namespace Класс_Unit
         public Unit(string name)
         {
             Name = name;
-        }
-
-        public Unit(int Damage)
-        {
             Damage = 5;
-        }
-
-        public Unit(float Armor)
-        {
             Armor = 0.6f;
         }
 
-                //Фактическое здоровье(GetRealHealth)
+        //Фактическое здоровье(GetRealHealth)
         public float GetRealHealth()
         {
             return Health * (1f + Armor);
         }
 
         //Получить урон(SetDamage)
-        public bool SetDamage()
+        public bool SetDamage(float value)
         {
+            health -= value * Armor;
             if (Health <= 0f)
             {
                 Console.WriteLine("Юнит погиб");
@@ -83,7 +76,6 @@ namespace Класс_Unit
             }
             else 
             {
-                var newHealth = Health * Armor;
                 Console.WriteLine("Юнит жив");
                 return false;
             }
@@ -97,8 +89,6 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Введите имя бойца");
-        string name = Console.ReadLine();
-        
+     
     }
 }

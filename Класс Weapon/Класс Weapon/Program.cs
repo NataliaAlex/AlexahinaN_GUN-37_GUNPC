@@ -45,18 +45,12 @@ class Weapon
     public Weapon (string name)
     {
         Name = name;
-    }
-
-    public Weapon(string Name, int minDamage, int maxDamage): this ("name")
-    {
-        MinDamage = minDamage;
-        MaxDamage = maxDamage;
-        SetDamageParams(MinDamage, MaxDamage);
-    }
-
-    public Weapon(float Durability)
-    {
         Durability = 1;
+    }
+
+    public Weapon(string Name, int minDamage, int maxDamage): this ("Name")
+    {
+        SetDamageParams(minDamage, maxDamage);
     }
 
     //Параметры урона (SetDamageParams)
@@ -64,22 +58,24 @@ class Weapon
     {
         if (MinDamage > MaxDamage)
         {
-            Console.WriteLine("Некорректные данные" + Name);
-            MaxDamage = MinDamage;
+            Console.WriteLine("Некорректные данные " + Name);
+            (MinDamage, MaxDamage) = (MaxDamage, MinDamage); //числа меняются местами
         }
 
         if (MinDamage < 1)
         {
             MinDamage = (int) 1f;
             Console.WriteLine("Минимальный урон 1");
-            return;
         }
-
+ 
         if (MaxDamage <= 1)
         {
             MaxDamage = 10;
             Console.WriteLine("Максимальный урон 10");
         }
+
+        this.MinDamage = MinDamage;
+        this.MaxDamage = MaxDamage;
     }
 
     //Вернуть урон(GetDamage)
@@ -96,7 +92,7 @@ namespace Класс_Weapon
     {
         static void Main(string[] args)
         {
-        
+
         }
     }
 }
