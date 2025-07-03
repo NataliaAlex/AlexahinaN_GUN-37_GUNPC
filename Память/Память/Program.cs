@@ -21,12 +21,12 @@ namespace Сlass
 {
     public struct Interval
     {
-        public int Min;
-        public int Max;
+        public int Min { get; }
+        public int Max { get; }
         public Random RandomGet;
         public Interval(int minValue, int maxValue)
         {
-            Random RandomGet = new Random();
+            RandomGet = new Random();
             if (minValue > maxValue)
             {
                 (minValue, maxValue) = (maxValue, minValue);
@@ -50,6 +50,7 @@ namespace Сlass
                 maxValue += 10;
                 Console.WriteLine("Некорректные данные, maxValue = 10");
             }
+
             this.Min = minValue;
             this.Max = maxValue;
         }
@@ -58,7 +59,7 @@ namespace Сlass
         {
             get
             {
-                return RandomGet.Next(Min, Max);
+                return RandomGet.Next((Max - Min) + Min);
             }
         }
 
@@ -109,8 +110,8 @@ namespace Сlass
             {
                 var room = rooms[i];
                 Console.WriteLine();
-                Console.WriteLine("Unit: " + room.Unit);
-                Console.WriteLine("Weapon: " + room.Weapon);
+                Console.WriteLine("Unit: " + room.Unit.Name + " " + room.Unit.Damage.Min + " " + room.Unit.Damage.Max);
+                Console.WriteLine("Weapon: " + room.Weapon.Name + " " + room.Weapon.Damage.Min + " " + room.Weapon.Damage.Max);
                 Console.WriteLine();
             }
         }
@@ -136,16 +137,16 @@ namespace Сlass
         public Unit(string name)
         {
             Name = name;
-            Damage = new Interval(1, 10);
+            Damage = new Interval(0, 0);
             Armor = 0.6f;
         }
 
         public Unit(string name, int minDamage, int maxDamage)
         {
             Name = name;
-            Damage = new Interval(0, maxDamage);
-            Armor = 0.6f;
+            Damage = new Interval(minDamage, maxDamage);
         }
+
         public float GetRealHealth()
         {
             return Health * (1f + Armor);
@@ -166,22 +167,20 @@ namespace Сlass
             }
 
         }
+
     }
 }
 
 class Weapon
 {
     public string Name { get; }
-    public int MinDamage { get; private set; }
-    public int MaxDamage { get; private set; }
     public float Durability { get; }
-    public Interval Damage { get; }
+    public Interval Damage { get; private set; }
 
     public Weapon(string name)
     {
         Name = name;
         Durability = 1;
-        Damage = new Interval(MinDamage, MaxDamage);
     }
 
     public Weapon(string Name, int minDamage, int maxDamage) : this(Name)
@@ -209,13 +208,12 @@ class Weapon
             Console.WriteLine("Максимальный урон 10");
         }
 
-        this.MinDamage = MinDamage;
-        this.MaxDamage = MaxDamage;
+        Damage = new Interval(MinDamage, MaxDamage);
     }
 
     public int GetDamage()
     {
-        int GetDamagebyWeapon = (MinDamage + MaxDamage) / 2;
+        int GetDamagebyWeapon = (Damage.Min + Damage.Max) / 2;
         return GetDamagebyWeapon;
     }
 
