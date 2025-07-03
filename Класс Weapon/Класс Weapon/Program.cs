@@ -48,7 +48,7 @@ class Weapon
         Durability = 1;
     }
 
-    public Weapon(string Name, int minDamage, int maxDamage): this ("Name")
+    public Weapon(string Name, int minDamage, int maxDamage): this (Name)
     {
         SetDamageParams(minDamage, maxDamage);
     }
@@ -92,7 +92,8 @@ namespace Класс_Weapon
     {
         static void Main(string[] args)
         {
-
+            Weapon weapon = new Weapon(Name: "Sword", maxDamage: 15, minDamage: 1);
+            Console.WriteLine("Weapon name " + weapon.Name);
         }
     }
 }
