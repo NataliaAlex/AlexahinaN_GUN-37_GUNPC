@@ -142,17 +142,17 @@ namespace Коллекции
         {
             Console.WriteLine("Введите 1,2 или 3 для перехода к заданию 1,2 или 3");
             Console.WriteLine("Для выхода из программы введите =");
-            int task = int.Parse(Console.ReadLine()); // Используйте tryParse
+            int task = int.Parse(Console.ReadLine());
             switch (task)
             {
                 case 1:
-                    CheckTaskFirst(); // Выполнение задания в отдельном методе
+                    CheckTaskFirst();
                     break;
                 case 2:
-                    CheckTaskSecond(); // Выполнение задания в отдельном методе
+                    CheckTaskSecond();
                     break;
                 case 3:
-                    CheckTaskThird(); // Выполнение задания в отдельном методе
+                    CheckTaskThird();
                     break;
             }
         }
