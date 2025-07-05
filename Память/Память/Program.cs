@@ -48,7 +48,7 @@ namespace Сlass
             if (minValue == maxValue)
             {
                 maxValue += 10;
-                Console.WriteLine("Некорректные данные, maxValue = 10");
+                Console.WriteLine("Некорректные данные, maxValue + 10");
             }
 
             this.Min = minValue;
@@ -190,31 +190,12 @@ class Weapon
 
     public void SetDamageParams(int MinDamage, int MaxDamage)
     {
-        if (MinDamage > MaxDamage)
-        {
-            Console.WriteLine("Некорректные данные " + Name);
-            (MinDamage, MaxDamage) = (MaxDamage, MinDamage); //числа меняются местами
-        }
-
-        if (MinDamage < 1)
-        {
-            MinDamage = (int)1f;
-            Console.WriteLine("Минимальный урон 1");
-        }
-
-        if (MaxDamage <= 1)
-        {
-            MaxDamage = 10;
-            Console.WriteLine("Максимальный урон 10");
-        }
-
-        Damage = new Interval(MinDamage, MaxDamage);
+         Damage = new Interval(MinDamage, MaxDamage);
     }
 
     public int GetDamage()
     {
-        int GetDamagebyWeapon = (Damage.Min + Damage.Max) / 2;
-        return GetDamagebyWeapon;
+        return Damage.Get;
     }
 
 }
