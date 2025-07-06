@@ -142,7 +142,9 @@ namespace Коллекции
         {
             Console.WriteLine("Введите 1,2 или 3 для перехода к заданию 1,2 или 3");
             Console.WriteLine("Для выхода из программы введите =");
-            int task = int.Parse(Console.ReadLine());
+            int task;
+            int.TryParse(Console.ReadLine(), out int number);
+            task = number;
             switch (task)
             {
                 case 1:
