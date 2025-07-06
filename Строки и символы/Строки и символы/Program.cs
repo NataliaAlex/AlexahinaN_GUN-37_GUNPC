@@ -12,9 +12,7 @@ namespace Строки_и_символы
     {
         public string ConcatenateStrings(string beginning, string end)
         {
-            string.Concat(beginning + end);
-            Console.WriteLine(string.Concat(beginning + end));
-            return (beginning + end);
+            return string.Concat(beginning + end);
         }
     }
 
@@ -26,7 +24,6 @@ namespace Строки_и_символы
     {
         public string GreetUser(string name, string age)
         {
-            Console.WriteLine($"Hello, {name}! \nYou are {age} years old");
             return ($"Hello, {name}! \nYou are {age} years old");
         }
     }
@@ -38,10 +35,7 @@ namespace Строки_и_символы
     {
         public string InfoStrings(string phrase)
         {
-            Console.WriteLine("Длина строки " + phrase.Length);
-            Console.WriteLine(phrase.ToUpper());
-            Console.WriteLine(phrase.ToLower());
-            return (phrase);
+            return ("Длина строки " + phrase.Length + " " + phrase.ToUpper() + " " + phrase.ToLower());
         }
     }
 
@@ -55,8 +49,7 @@ namespace Строки_и_символы
             {
                 Console.WriteLine("Символов меньше 5");
             }
-            Console.WriteLine(simbol.Substring(0, 5));
-            return (simbol);
+            return (simbol.Substring(0, 5));
         }
     }
 
@@ -66,7 +59,7 @@ namespace Строки_и_символы
     //каждый элемент - через пробел.Какой метод StringBuilder вы будете использовать: Append или AppendLine?
     public class Task5
     {
-        public string StringBuilder(string[] idiom)
+        public string Builder(string[] idiom)
         {
             var StringBuilder = new StringBuilder();
             for (int i = 0; i < idiom.Length; i++)
@@ -86,12 +79,7 @@ namespace Строки_и_символы
     {
         public string ReplaceWord(string line, string forSearch, string forReplace)
         {
-            Console.WriteLine(line);
-
-            line = line.Replace(forSearch, forReplace);
-
-            Console.WriteLine(line);
-            return (line);
+            return (line.Replace(forSearch, forReplace));
         }
     }
 
@@ -99,29 +87,35 @@ namespace Строки_и_символы
     {
         static void Main(string[] args)
         {
-            Task1 ConcatenateStrings = new Task1();
-            ConcatenateStrings.ConcatenateStrings("My Cup of ", "Tea");
+            Task1 Concat = new Task1();
+            Concat.ConcatenateStrings("My Cup of ", "Tea");
+            Console.WriteLine(Concat.ConcatenateStrings("My Cup of ", "Tea"));
             Console.WriteLine();
 
             Task2 GreetUser = new Task2();
             GreetUser.GreetUser("Spenser", "30");
+            Console.WriteLine(GreetUser.GreetUser("Spenser", "30"));
             Console.WriteLine();
 
             Task3 InfoStrings = new Task3();
             InfoStrings.InfoStrings("Fight Fire With Fire");
+            Console.WriteLine(InfoStrings.InfoStrings("Fight Fire With Fire"));
             Console.WriteLine();
 
             Task4 Substring = new Task4();
             Substring.Substring("Curiosity Killed The Cat");
+            Console.WriteLine(Substring.Substring("Curiosity Killed The Cat"));
             Console.WriteLine();
 
-            Task5 StringBuilder = new Task5();
-            //StringBuilder.StringBuilder();
+            Task5 Builder = new Task5();
             string[] idiom = { "What", "Goes", "Up", "Must", "Come", "Down" };
+            Builder.Builder(idiom);
             Console.WriteLine();
 
             Task6 ReplaceWord = new Task6();
             ReplaceWord.ReplaceWord("A Little Bird Told Me", "Told", "Sang to");
+            Console.WriteLine("A Little Bird Told Me");
+            Console.WriteLine(ReplaceWord.ReplaceWord("A Little Bird Told Me", "Told", "Sang to"));
             Console.WriteLine();
         }
     }
