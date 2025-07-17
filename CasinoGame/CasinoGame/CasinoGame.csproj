@@ -43,11 +43,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlackJack.cs" />
+    <Compile Include="Card\Card.cs" />
+    <Compile Include="Casino.cs" />
+    <Compile Include="CasinoGameBase.cs" />
+    <Compile Include="CardVariant.cs" />
+    <Compile Include="ISaveLoadService.cs" />
+    <Compile Include="TheDiceGame\TheDiceGame.cs" />
+    <Compile Include="WrongDiceNumberException\WrongDiceNumberException.cs" />
+    <Compile Include="IGame.cs" />
+    <Compile Include="Dice.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

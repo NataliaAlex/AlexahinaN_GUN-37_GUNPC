@@ -6,12 +6,7 @@ using System.Threading.Tasks;
 
 namespace CasinoGame
 {
-    class Program
+    class CasinoGameBase
     {
-        static void Main(string[] args)
-        {
-            var casino = new Casino();
-            casino.StartGame();
-        }
     }
 }
