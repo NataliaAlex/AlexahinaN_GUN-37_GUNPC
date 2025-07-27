@@ -9,13 +9,12 @@ namespace CasinoGame
 {
     public struct Dice
     {
-        public readonly int Number;
         private readonly int _min;
         private readonly int _max;
-        public Random _random;
+        private readonly Random _random;
+        public readonly int Number;
 
-
-        public Dice (int min, int max) : this()
+        public Dice(int min, int max) : this()
         {
             _random = new Random();
             _random.Next(_min, _max + 1);
@@ -32,9 +31,11 @@ namespace CasinoGame
 
             if (min > max)
             {
-                throw new Exception("Минимальное значение не может быть больше максимального");
+                throw new ArgumentException("Минимальное значение не может быть больше максимального");
             }
 
+            _min = min;
+            _max = max;
         }
     }
 }

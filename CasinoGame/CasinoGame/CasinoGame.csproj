@@ -48,6 +48,7 @@
     <Compile Include="Casino.cs" />
     <Compile Include="CasinoGameBase.cs" />
     <Compile Include="CardVariant.cs" />
+    <Compile Include="IBuilderSupporter.cs" />
     <Compile Include="ISaveLoadService.cs" />
     <Compile Include="TheDiceGame.cs" />
     <Compile Include="WrongDiceNumberException.cs" />

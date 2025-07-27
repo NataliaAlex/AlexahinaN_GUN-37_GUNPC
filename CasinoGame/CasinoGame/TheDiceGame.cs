@@ -6,21 +6,50 @@ using System.Threading.Tasks;
 
 namespace CasinoGame
 {
-    class TheDiceGame
+    public class DiceGame : CasinoGameBase
     {
         private readonly int _diceCount;
         private readonly int _minValue;
         private readonly int _maxValue;
         private readonly List<Dice> _dices;
 
-        public TheDiceGame(int numberOfDice, int min, int max)
+        public DiceGame(int numberOfDice, int min, int max)
         {
             _diceCount = numberOfDice;
             _minValue = min;
             _maxValue = max;
+            _dices = new List<Dice>();
+            FactoryMethod();
         }
 
-        protected void FactoryMethod()
+        public override void PlayGame()
+        {
+            Console.WriteLine("Игра в кости");
+
+            int playerScore = RollDice();
+            int computerScore = RollDice();
+
+            Console.WriteLine($"Очки игрока {playerScore}");
+            Console.WriteLine($"Очки противника: {computerScore}");
+
+            if (playerScore > computerScore)
+            {
+                Console.WriteLine("Игрок победил");
+                OnWinInvoke();
+            }
+            else if (playerScore < computerScore)
+            {
+                Console.WriteLine("Противник победил");
+                OnLooseInvoke();
+            }
+            else
+            {
+                Console.WriteLine("Ничья");
+                OnDrawInvoke();
+            }
+        }
+
+        protected override void FactoryMethod()
         {
             for (int i = 0; i < _diceCount; i++)
             {
@@ -28,7 +57,7 @@ namespace CasinoGame
             }
         }
 
-        public int RollOfTheDice()
+        private int RollDice()
         {
             int totalScore = 0;
             foreach (var dice in _dices)
@@ -36,33 +65,6 @@ namespace CasinoGame
                 totalScore += dice.Number;
             }
             return totalScore;
-        }
-
-        public void PlayDiceGame()
-        {
-            Console.WriteLine("Игра в кости \n Выбейте большее число очков, чем ваш соперник");
-
-            int playerScore = RollOfTheDice();
-            int computerScore = RollOfTheDice();
-
-            if (playerScore > computerScore)
-            {
-                Console.WriteLine($"{playerScore}, {computerScore}") ;
-                Console.WriteLine("Победил Игрок!");
-                OnWinInvoke();
-            }
-            else
-
-            if (playerScore < computerScore)
-            {
-                Console.WriteLine("Победил Соперник!");
-                OnLooseInvoke();
-            }
-            else
-            {
-                Console.WriteLine("У нас ничья!");
-                OnDrawInvoke();
-            }
         }
     }
 }

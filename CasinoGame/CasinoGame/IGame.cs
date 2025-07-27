@@ -8,6 +8,6 @@ namespace CasinoGame
 {
     interface IGame
     {
-        public void StartGame();
+        void StartGame();
     }
 }
